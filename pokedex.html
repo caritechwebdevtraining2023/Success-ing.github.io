@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="dist/bundle.css" rel="stylesheet">
 
-    <title>Pokedex</title>
+    <title>Pokedex (CDN)</title>
 
     <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
 </head>
@@ -314,6 +315,8 @@ function showSlides() {
   transition: box-shadow 1s;
   float: left;
   margin: 10px;
+  
+  ;
 }
 
 
@@ -324,7 +327,7 @@ function showSlides() {
   height: 80%;
   display: block;
   white-space: pre;
-  font: 15pt 'sigmar one';
+  font: 18pt 'sigmar one';
   color: white;
   border: 2px solid;
   text-align: center;
@@ -354,54 +357,155 @@ function showSlides() {
 
 #bulbasaur {
   background-image: url(http://vignette4.wikia.nocookie.net/pokemon/images/2/21/001Bulbasaur.png/revision/latest/scale-to-width-down/200?cb=20140328190757);
-  color: rgba(71, 121, 94, .9);
+  color: #daf1ee;
 }
 
 #bulbasaur::after {
   content: 'Bulbasaur';
 }
+#clefable {
+  background-image: url(https://static.wikia.nocookie.net/sonic-pokemon-unipedia/images/9/9a/Clefable_AG_anime.png/revision/latest?cb=20131108043043);
+  color: #FCDFE5;
+  
+  
+  
+ 
+  
+}
+
+#clefable::after {
+  content: 'Clefable';
+  
+}
+
+#jigglypuff {
+  background-image: url();
+  color: #FCDFE5;
+  
+  
+ 
+  
+}
+
+#jigglypuff::after {
+  content: 'Jigglypuff';
+}
+
+#chansey {
+  background-image: url();
+  color: #FAD6B5;
+}
+
+#chansey::after {
+  content: 'Chansey'
+}
 
 #charmander {
   background-image: url(http://vignette2.wikia.nocookie.net/pokemon/images/7/73/004Charmander.png/revision/latest/scale-to-width-down/200?cb=20140724195345);
-  color: rgba(221, 86, 63, .9);
+  color: #FBF1D7;
 }
 
 #charmander::after {
   content: 'Charmander'
 }
+#charmeleon {
+  background-image: url();
+  color:#F2DEBD ;
+}
 
+#charmeleon::after {
+  content: 'Charmeleon'
+}
+#venusaur {
+  background-image: url();
+  color: #B6E3E7 ;
+}
+
+#venusaur::after {
+  content: 'Venusaur'
+}
 #squirtle {
   background-image: url(http://vignette2.wikia.nocookie.net/pokemon/images/3/39/007Squirtle.png/revision/latest/scale-to-width-down/200?cb=20140328191525);
-  color: rgba(65, 102, 114, .9);
+  color: #c2d7f3;
 }
 
 #squirtle::after {
   content: 'Squirtle'
 }
+#nidoqueen {
+  background-image: url();
+  color: #e7d3ed;
+}
 
+#nidoqueen::after {
+  content: 'Nidoqueen'
+}
 #pikachu {
   background-image: url(http://vignette2.wikia.nocookie.net/pokemon/images/0/0d/025Pikachu.png/revision/latest/scale-to-width-down/200?cb=20140328192412);
-  color: rgba(179, 152, 98, .9);
+  color: #FBF1D7;
 }
 
 #pikachu::after {
   content: 'Pikachu'
 }
+#persian {
+  background-image: url();
+  color: #F2DEBD ;
+}
+
+#persian::after {
+  content: 'Persian'
+}
+#arcanine {
+  background-image: url();
+  color:#F2DEBD ;
+}
+
+#arcanine::after {
+  content: 'Arcanine'
+}
+#scyther {
+  background-image: url();
+  color: #daf1ee;
+}
+
+#scyther::after {
+  content: 'Scyther';
 
 #wrapper {
-  width: 500px;
-  height: 500px;
-  margin:  auto;
+  display: flex;
+   margin:  auto;
+}
+.imagecontainer {
+    display: flex; /* Use flexbox for a row layout */
+    justify-content: space-between; /* Distribute items evenly */
+    align-items: center; /* Center items vertically */
+    flex-wrap: wrap; /* Wrap items to new lines if necessary */
+    margin: 10px; /* Add margin for spacing */
 }
 	</style>
 
-<div id="wrapper">
-  <div id="bulbasaur" class="pokemon"></div>
+<div class="imagecontainer" >
+    
+  <div id="clefable" class="pokemon"></div>
   <div id="charmander" class="pokemon"></div>
+  <div id="charmeleon" class="pokemon"></div>
+  <div id="bulbasaur" class="pokemon"></div>
+  <div id="venusaur" class="pokemon"></div>
   <div id="squirtle" class="pokemon"></div>
+  <div id="nidoqueen" class="pokemon"></div>
+  </div>
+  
+  
+  <div>
+  <div id="jigglypuff" class="pokemon"></div>
   <div id="pikachu" class="pokemon"></div>
-</div>
-	
+  <div id="arcanine" class="pokemon"></div>
+  <div id="scyther" class="pokemon"></div>
+  
+  
+  
+	</div>
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-logo">
@@ -420,12 +524,7 @@ function showSlides() {
         <p>&copy; 2023 Your Website. All rights reserved.</p>
     </div>
 </footer>
-<a href="/pokedex.html"><img src="poke.png" alt=""></a>
-<form if ="form"><input type="text" id="search" class="search" 
-placeholder="Search your Pokemon"></form>
-<div id ="poke_container" class = "poke_container"></div>
-
-</form><div class="container mx-auto pt-10 h-screen">
+<div class="container mx-auto pt-10 h-screen">
   <div class="bg-red-600 border-gray-700 flex flex-col h-full rounded-lg shadow-lg shadow-red-500">
       <div class="flex gap-2 pt-5 pl-5 ">
           <div class="relative">
@@ -454,9 +553,7 @@ placeholder="Search your Pokemon"></form>
           <!-- Pokedex Content -->
           <div id="content-wrapper" class="bg-white border border-2 border-gray-700 h-full shadow-inner shadow-black overflow-auto">
               <div id="content" class="p-5">
-                
-
-                </div>
+                <ol id="pokedex" class="scroll"></ol>
               </div>
           </div>
       </div> 
