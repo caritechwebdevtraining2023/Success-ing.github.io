@@ -36,6 +36,8 @@ fetchPokemons();
 function createPokemonCard(pokemon){
     const pokemonEL = document.createElement("div");
     pokemonEL.classList.add("pokemon");
+    const imageNumber = pokemon.id.toString().padStart(3, "0");
+    const imagePath = `./images/${imageNumber}.png`;
     const poke_types = pokemon.types.map((eL) => eL.type.name).slice(0,1);
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
     const poke_stat = pokemon.stats.map((eL)=> eL.stat.name);
@@ -48,8 +50,8 @@ function createPokemonCard(pokemon){
     const base = base_stat.map((base)=>{
         return`<li class="base">${base}</li>`
     }).join("");
-    const pokeInnerHTML = `<div class = "img- container">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png" alt="${name}"/>
+    const pokeInnerHTML = `<div class = "img-container">
+    <img src="${imagePath}" alt="${name}"/>
     </div>
     <div class = "info">
     <span class = "number">#${pokemon.id.toString().padStart(3,"0")}</span>
