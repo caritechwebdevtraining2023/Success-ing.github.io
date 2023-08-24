@@ -13,6 +13,14 @@
 <body>
 
 <style>
+
+.pokedex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure the container takes the full viewport height */
+}
 @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
 
@@ -698,8 +706,8 @@ function showSlides() {
   </div>
 </div>
 
-
-<script src="pokedex2.js"></script>
+<div class="pokedex-container"><script src="pokedex2.js"></script>
+</div>
 
 
 </body>
