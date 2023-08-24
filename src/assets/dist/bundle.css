@@ -44,3 +44,8 @@
   .pokemon:hover .info {
     transform: translateX(-100%);
   }
+
+  .search{
+    color:#19684a;
+
+  }
