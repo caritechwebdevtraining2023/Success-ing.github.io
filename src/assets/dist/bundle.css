@@ -52,7 +52,7 @@ body, html {
 label {
   font-family: "Hind", sans-serif;
   display: block;
-  color: #3c4b66;
+  color: #f5eeb8;
   margin-bottom: 12px;
   background: linear-gradient(45deg, rgba(#6b7b8f, 1), #3c4b66);
   -webkit-background-clip: text;
@@ -70,7 +70,7 @@ input {
   display: block;
   font-family: 'Orbitron', sans-serif;
   font-weight: 600;
-  color: #a9b8c9;
+  color: #f5eeb8;
   -webkit-appearance: none;
   transition: all 240ms ease-out;
   width: 100%;
