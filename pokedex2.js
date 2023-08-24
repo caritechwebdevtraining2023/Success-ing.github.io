@@ -5,12 +5,8 @@ const pokemons_number = 151;
 const search = document.getElementById("search");
 const form = document.getElementById("form");
 
-const fetchPokemons = async () => {
-    for (let i = 1; i <= pokemons_number; i++) {
-        await getAllPokemon(i);
-    }
-    pokemons.forEach((pokemon) => createPokemonCard(pokemon));
-};
+let pokemons = [];
+
 
 const removePokemon = () => {
     const pokemonELs = document.getElementsByClassName("pokemon");
@@ -54,7 +50,6 @@ const fetchPokemon = () => {
             id: data.id,
             image: data.sprites['front_default'],
             type: data.types.map((type) => type.type.name).join(', ')
-
         }));
         displayPokemon(pokemon);
     });
@@ -81,8 +76,14 @@ const displayPokemon = (pokemon) => {
     poke_container.innerHTML = pokemonHTMLString;
 };
 
+const fetchPokemons = async () => {
+    for (let i = 1; i <= pokemons_number; i++) {
+        await getAllPokemon(i);
+    }
+    fetchPokemon(); // Call fetchPokemon once all Pokémon data is loaded
+};
+
 fetchPokemons();
-fetchPokemon();
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
