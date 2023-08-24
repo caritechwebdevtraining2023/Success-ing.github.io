@@ -1,12 +1,10 @@
 const poke_container = document.getElementById("poke_container");
-const pokedex = document.getElementById('pokedex');
 const url = "https://pokeapi.co/api/v2/pokemon";
 const pokemons_number = 151;
 const search = document.getElementById("search");
 const form = document.getElementById("form");
 
 let pokemons = [];
-
 
 const removePokemon = () => {
     const pokemonELs = document.getElementsByClassName("pokemon");
@@ -21,20 +19,18 @@ const removePokemon = () => {
 const getPokemon = async (id) => {
     const searchPokemons = pokemons.filter((poke) => poke.name === id);
     removePokemon();
-    searchPokemons.forEach((pokemon) => createPokemonCard(pokemon));
-
-    if (searchPokemons.length > 0) {
-        const firstResult = document.querySelector(".pokemon");
-        if (firstResult) {
-            firstResult.scrollIntoView({ behavior: "smooth" });
-        }
-    }
+    displayPokemon(searchPokemons);
 };
 
 const getAllPokemon = async (id) => {
     const res = await fetch(`${url}/${id}`);
     const pokemon = await res.json();
-    pokemons = [...pokemons, pokemon];
+    pokemons = [...pokemons, {
+        name: pokemon.name,
+        id: pokemon.id,
+        image: pokemon.sprites.front_default,
+        type: pokemon.types.map((type) => type.type.name).join(', ')
+    }];
 };
 
 const fetchPokemon = () => {
@@ -48,7 +44,7 @@ const fetchPokemon = () => {
         const pokemon = results.map((data) => ({
             name: data.name,
             id: data.id,
-            image: data.sprites['front_default'],
+            image: data.sprites.front_default,
             type: data.types.map((type) => type.type.name).join(', ')
         }));
         displayPokemon(pokemon);
@@ -67,7 +63,7 @@ const displayPokemon = (pokemon) => {
         <div class="info">
             <span class="number">#${pokeman.id}</span>
             <h3 class="name">${pokeman.name}</h3>
-            <small class="type">${pokeman.type}</small>
+            <small class="type">Type = ${pokeman.type}</small>
         </div>
     </li>
     `
@@ -80,20 +76,39 @@ const fetchPokemons = async () => {
     for (let i = 1; i <= pokemons_number; i++) {
         await getAllPokemon(i);
     }
-    fetchPokemon(); // Call fetchPokemon once all Pokémon data is loaded
+    fetchPokemon();
 };
 
 fetchPokemons();
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const searchTerm = search.value;
+    const searchTerm = search.value; 
     if (searchTerm) {
-        getPokemon(searchTerm);
+        const searchResult = pokemons.find(pokemon => pokemon.name === searchTerm.toLowerCase());
+
+        if (searchResult) {
+            const pokemonCardHTML = createPokemonCard(searchResult);
+            poke_container.innerHTML = pokemonCardHTML;
+        } else {
+            poke_container.innerHTML = "<p>No matching Pokemon found.</p>";
+        }
+
         search.value = "";
-    } else if (searchTerm === "") {
-        pokemons = [];
-        removePokemon();
-        fetchPokemons();
     }
 });
+
+function createPokemonCard(pokemon) {
+    return `
+        <div class="pokemon">
+            <div class="img-container">
+                <img src="${pokemon.image}" alt="${pokemon.name}"/>
+            </div>
+            <div class="info">
+                <span class="number">#${pokemon.id}</span>
+                <h3 class="name">${pokemon.name}</h3>
+                <small class="type">Type = ${pokemon.type}</small>
+            </div>
+        </div>
+    `;
+}
