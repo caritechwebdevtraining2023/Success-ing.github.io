@@ -64,7 +64,7 @@ label {
 }
 
 input {
-  background-color: #e3edf7;
+ 
   padding: 16px 32px;
   border: none;
   display: block;
@@ -82,7 +82,7 @@ input {
   &:focus {
     outline: none;
     color: #6d7f8f;
-    background-color: lighten(#e3edf7, 3%);
+    
   }
 };
   
