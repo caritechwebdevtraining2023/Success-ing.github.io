@@ -76,12 +76,12 @@ input {
   width: 100%;
   
   &::placeholder {
-    color: #6d7f8f;
+    color: #f5eeb8;
   }
   
   &:focus {
     outline: none;
-    color: #6d7f8f;
+    color: #f5eeb8;
     
   }
 };
