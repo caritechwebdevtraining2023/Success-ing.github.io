@@ -86,7 +86,7 @@ fetchPokemon();
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const searchTerm = search.value.toLowerCase;
+    const searchTerm = search.value;
     if (searchTerm) {
         getPokemon(searchTerm);
         search.value = "";
