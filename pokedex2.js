@@ -26,6 +26,13 @@ const getPokemon = async (id) => {
     const searchPokemons = pokemons.filter((poke) => poke.name === id);
     removePokemon();
     searchPokemons.forEach((pokemon) => createPokemonCard(pokemon));
+
+    if (searchPokemons.length > 0) {
+        const firstResult = document.querySelector(".pokemon");
+        if (firstResult) {
+            firstResult.scrollIntoView({ behavior: "smooth" });
+        }
+    }
 };
 
 const getAllPokemon = async (id) => {
