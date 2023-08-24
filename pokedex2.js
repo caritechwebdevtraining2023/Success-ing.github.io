@@ -26,6 +26,13 @@ const getPokemon = async (id) => {
     const searchPokemons = pokemons.filter((poke) => poke.name === id);
     removePokemon();
     searchPokemons.forEach((pokemon) => createPokemonCard(pokemon));
+
+    if (searchPokemons.length > 0) {
+        const firstResult = document.querySelector(".pokemon");
+        if (firstResult) {
+            firstResult.scrollIntoView({ behavior: "smooth" });
+        }
+    }
 };
 
 const getAllPokemon = async (id) => {
@@ -79,7 +86,7 @@ fetchPokemon();
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const searchTerm = search.value;
+    const searchTerm = search.value.toLowerCase;
     if (searchTerm) {
         getPokemon(searchTerm);
         search.value = "";
