@@ -664,6 +664,14 @@ function showSlides() {
     flex-wrap: wrap; /* Wrap items to new lines if necessary */
     margin: 10px; /* Add margin for spacing */
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 	</style>
 
 
@@ -679,7 +687,9 @@ function showSlides() {
 <form id="form">
   <input type="text" id="search" class="search" placeholder="Search your Pokemon">
 </form>
-<div id="poke_container" class="poke_container"></div>
+	    <div class:"container">
+		    <div id="poke_container" class="poke_container"></div>
+	    </div>
                 
 
                 </div>
